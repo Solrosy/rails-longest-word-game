@@ -1,0 +1,21 @@
+
+  <h1 class="m2" >New Game</h1>
+  <div class="d-flex flex-row">
+    <% @letters.each do |letter| %>
+      <div class="h2 p-2 bg-info m-2 p-3 border-1 shadow-sm rounded"><%= letter %></div>
+    <% end %>
+    </div>
+
+  <div class="my-5 w-50">
+    <form action="/score" method="post" data-turbo="false">
+      <label class="form-label">What is the longest word that you can find?</label>
+      <div class="input-group mb-3">
+        <input type="text" name="grid" class="d-none" value="<%= @letters.join %>">
+        <input type="text" name="guess" class="form-control">
+        <input type="submit" class="input-group-text">
+      </div>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    </form>
+
+    <%= link_to "Reset", new_path %>
+</div>
